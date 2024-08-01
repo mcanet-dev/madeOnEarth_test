@@ -1,12 +1,14 @@
 import { _decorator, assetManager, Component, JsonAsset, resources, TextAsset } from 'cc';
+import HeroAssetManager from '../assetManagement/HeroAssetManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('StateController')
 export class StateController extends Component {
-    state: InitialState | undefined;
+    state: InitialState | null = null;
 
     start() {
         this.loadData("settings/initial_state");
+        HeroAssetManager.loadAll();
     }
 
     loadData(path: string){
